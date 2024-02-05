@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Payment : MonoBehaviour
+public class Withdraw : MonoBehaviour
 {
     public GameObject mainWithdraw;
     public GameObject mainPayment;
-    public GameObject payment;
-    public TextMeshProUGUI inputPayTxt;
+    public GameObject withdraw;
 
-    int pay1 = 10000;
-    int pay3 = 30000;
-    int pay5 = 50000;
-    int inputPay;
+    int draw1 = 10000;
+    int draw3 = 30000;
+    int draw5 = 50000;
 
-    public void Payment1()
+    public void Withdraw1()
     {
-        if (GameManager.I.cash >= pay1)
+        if (GameManager.I.customerCash >= draw1)
         {
-            GameManager.I.cash -= pay1;
-            GameManager.I.customerCash += pay1;
+            GameManager.I.cash += draw1;
+            GameManager.I.customerCash -= draw1;
             GameManager.I.cashTxt.text = GameManager.I.cash.ToString();
             GameManager.I.customerCashTxt.text = GameManager.I.customerCash.ToString();
         }
@@ -32,28 +30,12 @@ public class Payment : MonoBehaviour
 
     }
 
-    public void Payment3()
+    public void Withdraw3()
     {
-       if (GameManager.I.cash >= pay3)
+        if (GameManager.I.customerCash >= draw3)
         {
-            GameManager.I.cash -= pay3;
-            GameManager.I.customerCash += pay3;
-            GameManager.I.cashTxt.text = GameManager.I.cash.ToString();
-            GameManager.I.customerCashTxt.text = GameManager.I.customerCash.ToString();
-        }
-       else
-        {
-            GameManager.I.NoCashPopup();
-        }
-        
-    }
-
-    public void Payment5()
-    {
-        if (GameManager.I.cash >= pay5)
-        {
-            GameManager.I.cash -= pay5;
-            GameManager.I.customerCash += pay5;
+            GameManager.I.cash += draw3;
+            GameManager.I.customerCash -= draw3;
             GameManager.I.cashTxt.text = GameManager.I.cash.ToString();
             GameManager.I.customerCashTxt.text = GameManager.I.customerCash.ToString();
         }
@@ -61,17 +43,28 @@ public class Payment : MonoBehaviour
         {
             GameManager.I.NoCashPopup();
         }
+
     }
 
-    public void InputPayment()
+    public void Withdraw5()
     {
-        GameManager.I.cash += int.Parse(inputPayTxt.text);
+        if (GameManager.I.customerCash >= draw5)
+        {
+            GameManager.I.cash += draw5;
+            GameManager.I.customerCash -= draw5;
+            GameManager.I.cashTxt.text = GameManager.I.cash.ToString();
+            GameManager.I.customerCashTxt.text = GameManager.I.customerCash.ToString();
+        }
+        else
+        {
+            GameManager.I.NoCashPopup();
+        }
     }
 
 
     public void ATMMain()
     {
-        payment.SetActive(false);
+        withdraw.SetActive(false);
         mainPayment.SetActive(true);
         mainWithdraw.SetActive(true);
     }
@@ -82,7 +75,7 @@ public class Payment : MonoBehaviour
         GameManager.I.customerCashTxt.text = GameManager.I.customerCash.ToString();
     }
 
-
+    // Update is called once per frame
     void Update()
     {
         

@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
     public static GameManager I;
     public GameObject mainPayment;
     public GameObject payment;
+    public GameObject mainWithdraw;
     public GameObject withdraw;
     public int cash = 100000;
     public int customerCash = 50000;
     public TextMeshProUGUI cashTxt;
     public TextMeshProUGUI customerCashTxt;
+    public GameObject popup;
 
     private void Awake()
     {
@@ -20,18 +22,28 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Payment ()
+    public void Payment()
     {
         mainPayment.SetActive(false);
-        withdraw.SetActive(false);
+        mainWithdraw.SetActive(false);
         payment.SetActive(true);
     }
 
-    public void Withdraw ()
+    public void Withdraw()
     {
         mainPayment.SetActive(false);
-        withdraw.SetActive(false);
+        mainWithdraw.SetActive(false);
         withdraw.SetActive(true);
+    }
+
+    public void NoCashPopup()
+    {
+        popup.SetActive(true);
+    }
+
+    public void NoCashBtn()
+    {
+        popup.SetActive(false);
     }
 
 
