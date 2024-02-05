@@ -23,12 +23,14 @@ public class GameManager : MonoBehaviour
     public void Payment ()
     {
         mainPayment.SetActive(false);
+        withdraw.SetActive(false);
         payment.SetActive(true);
     }
 
     public void Withdraw ()
     {
         mainPayment.SetActive(false);
+        withdraw.SetActive(false);
         withdraw.SetActive(true);
     }
 
